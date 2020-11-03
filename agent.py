@@ -9,18 +9,15 @@ class Agent:
         self.maxLen = len(map)
         self.brain = [[0 for i in range(self.maxLen)] for j in range(self.maxLen)]
         #self.state = randint(maxLen)
-        pass
 
 
     def getPossbleActions(self, state):
         return [i for i in range(self.maxLen) if self.map[state][i]!=-1]
 
-    def devideBrain(self):
+    def divideBrain(self):
         maximum = max([max(row) for row in self.brain])
         if maximum>100:
             self.brain = [list(map(lambda x: round((x/maximum)*100), row)) for row in self.brain]
-        else:
-            pass
 
     def updatebrain(self):
         possibleActions = self.getPossbleActions(self.state)
@@ -49,7 +46,7 @@ class Agent:
                 self.printBrain()
                 print('goal state reached')
         else:
-            self.devideBrain()
+            self.divideBrain()
             self.printBrain()
             print(f'brain after {tryCount} try!')
 
